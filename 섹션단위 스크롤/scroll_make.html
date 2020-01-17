@@ -1,0 +1,142 @@
+<!-- 직접 만들어본 페이지 입니다 -->
+<!-- 스크롤을 내리면 섹션별로 스크롤이 내려가는 코드 입니다. -->
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>섹션 스크롤 만들어보기</title>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+            }
+
+            body::-webkit-scrollbar{
+                display: none;
+            }
+
+            h1{
+                margin: 0;
+                padding: 0;
+            }
+
+            .section1{
+                background-color: aqua;
+                height: 100vh;
+            }
+
+            .section2{
+                background-color: blanchedalmond;
+                height: 100vh;
+            }
+            
+            .section3{
+                background-color: cornflowerblue;
+                height: 100vh;
+            }
+            
+            .section4{
+                background-color: crimson;
+                height: 100vh;
+            }
+            
+            .section5{
+                background-color: darkmagenta;
+                height: 100vh;
+            }
+            
+            .section6{
+                background-color: darkslategrey;
+                height: 100vh;
+            }
+            
+            .section7{
+                background-color: gold;
+                height: 100vh;
+            }
+
+            /* .scrollBtn{
+                position:fixed;
+            } */
+        </style>
+      
+    </head>
+    <body>
+        <!-- <div class = "scrollBtn">
+            <div>
+                <a href="#section1">섹션1</a>
+            </div>
+            <div>
+                <a href="#section2">섹션2</a>
+            </div>
+            <div>
+                <a href="#section3">섹션3</a>
+            </div>
+            <div>
+                <a href="#section4">섹션4</a>
+            </div>
+            <div>
+                <a href="#section5">섹션5</a>
+            </div>
+            <div>
+                <a href="#section6">섹션6</a>
+            </div>
+            <div>
+                <a href="#section7">섹션7</a>
+            </div>
+        </div> -->
+        <section class="section1" id="section1">
+            <h1>섹션 영역 1 </h1>
+        </section>
+        <section class="section2" id="section2">
+            <h1>섹션 영역 2 </h1>
+        </section>
+        <section class="section3" id="section3">
+            <h1>섹션 영역 3 </h1>
+        </section>
+        <section class="section4" id="section4">
+            <h1>섹션 영역 4 </h1>
+        </section>
+        <section class="section5" id="section5">
+            <h1>섹션 영역 5 </h1>
+        </section>
+        <section class="section6" id="section6">
+            <h1>섹션 영역 6 </h1>
+        </section>
+        <section class="section7" id="section7">
+            <h1>섹션 영역 7 </h1>
+        </section>
+
+        <script>
+
+            // let prevScrollPosition = 0,
+            //     sectionVal = 0
+            let sectionHeight,
+                sectionVal = 1
+
+            window.addEventListener('scroll', function() {
+                let nowScrollPosition = window.scrollY
+                // if(nowScrollPosition >= prevScrollPosition) {
+                //     console.log('섹션이 내려가요오!!!')
+                //     document.getElementById('section' + sectionVal).scrollIntoView();
+                //     prevScrollPosition = nowScrollPosition
+                //     sectionVal = window.innerHeight
+                    
+                // } else {
+                //     console.log('섹션이 올라가요오!!!')
+                //     prevScrollPosition = nowScrollPosition
+                //     document.getElementById('section' + sectionVal).scrollIntoView();
+                //     sectionVal = window.innerHeight
+                // }
+                
+                document.getElementById('section' + sectionVal).scrollIntoView();
+                sectionVal++ 
+                console.log(nowScrollPosition)
+
+                // console.log(nowScrollPosition)
+                
+            })
+
+        </script>
+    </body>
+</html>
