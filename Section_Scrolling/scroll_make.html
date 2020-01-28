@@ -111,11 +111,16 @@
 
             // let prevScrollPosition = 0,
             //     sectionVal = 0
-            let sectionHeight,
-                sectionVal = 1
+            let sectionVal = 1
+            let section = document.getElementById('section' + sectionVal)
+
+            let nextSectionVal = sectionVal + 1
+            let nextSection = document.getElementById('section' + nextSectionVal)
+
+            let nowScrollPosition = window.scrollY
 
             window.addEventListener('scroll', function() {
-                let nowScrollPosition = window.scrollY
+                    
                 // if(nowScrollPosition >= prevScrollPosition) {
                 //     console.log('섹션이 내려가요오!!!')
                 //     document.getElementById('section' + sectionVal).scrollIntoView();
@@ -128,11 +133,10 @@
                 //     document.getElementById('section' + sectionVal).scrollIntoView();
                 //     sectionVal = window.innerHeight
                 // }
-                
-                document.getElementById('section' + sectionVal).scrollIntoView();
-                sectionVal++ 
-                console.log(nowScrollPosition)
-
+                // if( == ){
+                //     sectionVal++
+                // }
+                    console.log(sectionVal)
                 // console.log(nowScrollPosition)
                 
             })

@@ -1,0 +1,136 @@
+<!-- 헤더에 있는 네비게이션 바 클릭시 해당 섹션으로 이동하는 기능 입니다. -->
+<!-- 2020-01-28 생성 -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>scroll_make_2</title>
+    <script src="../jquery/jquery-3.4.1.min.js"></script>
+    <style type = "text/css">
+        body, p, ul, li, section, div, a {
+            padding: 0;
+            margin: 0;
+        }
+     
+        /* html{
+            scroll-behavior: smooth;
+        } */
+
+        body::-webkit-scrollbar{
+            display: none;
+        }
+
+        header{
+            position: fixed;
+            top: 0;
+            background-color: darkgreen;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header div p{
+            font-size: 30px;
+            font-weight: 600;
+            color: white;
+        }
+
+        header ul {
+            display: flex;
+            list-style-type: none;
+        }
+
+        header ul li {
+            padding: 0 10px;
+            margin: 0 10px;
+        }
+
+        header ul li p {
+            font-size: 22px;
+            color: white;
+            font-weight: 600;
+            margin-top: 5px;
+            display: block;
+            text-decoration: none;
+        }
+
+        header ul li p:hover {
+            color: grey;
+        }
+
+        section{
+            height: 100vh;
+        }
+        section:nth-child(1){
+            background-color: aqua;
+        }
+        section:nth-child(2){
+            background-color: cornsilk;
+        }
+        section:nth-child(3){
+            background-color: darkgoldenrod;
+        }
+        section:nth-child(4){
+            background-color: darksalmon;
+        }
+        section:nth-child(5){
+            background-color: cornflowerblue;
+        }
+        section p {
+            font-size: 30px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <p>섹션으로 이동하기</p>
+        </div>
+        <ul>
+            <li><p locate = "section1">섹션 1</p></li>
+            <li><p locate = "section2">섹션 2</p></li>
+            <li><p locate = "section3">섹션 3</p></li>
+            <li><p locate = "section4">섹션 4</p></li>
+            <li><p locate = "section5">섹션 5</p></li>
+        </ul>
+    </header>
+    <div class = "contents">
+        <section id = "section1">
+            <p>섹션1</p>
+        </section>
+        <section id = "section2">
+            <p>섹션2</p>
+        </section>
+        <section id = "section3">
+            <p>섹션3</p>
+        </section>
+        <section id = "section4">
+            <p>섹션4</p>
+        </section>
+        <section id = "section5">
+            <p>섹션5</p>
+        </section>
+    </div>
+
+    <script>
+
+        $(document).ready(function() {
+            $("ul li p").click(function() {
+                let clickSection = $(this).attr("locate"),
+                    nowScroll = $(".contents").find("#" + clickSection).prop("tagName"),
+                    contentsPosition = $("#" + clickSection).offset().top
+                $(window).animate(window.scrollTo(0, contentsPosition), 1000)    
+                
+                console.log(nowScroll)            
+                console.log(clickSection)            
+                console.log(contentsPosition)            
+            })            
+        })
+
+    </script>
+</body>
+</html>
