@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="../style/reset.css">
+    <style>
+        
+        #test {
+            animation: fadein 2s;
+            -moz-animation: fadein 2s;
+            /* Firefox */
+            -webkit-animation: fadein 2s;
+            /* Safari and Chrome */
+            -o-animation: fadein 2s;
+            /* Opera */
+        }
+
+        @keyframes fadein {
+            from {
+                opacity: .5;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @-moz-keyframes fadein {
+
+            /* Firefox */
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @-webkit-keyframes fadein {
+
+            /* Safari and Chrome */
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @-o-keyframes fadein {
+
+            /* Opera */
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+
+    <style type="text/css">
+        body {
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .color_show {
+            height: 100%;
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        .color_show>div {
+            height: 100%;
+            width: 40px;
+            transition: .3s;
+            box-shadow: -8px 0px 17px 0px;
+        }
+
+        .color_1 {
+            background-color: #fefefe;
+        }
+
+        .color_2 {
+            background-color: #bebebe;
+        }
+
+        .color_3 {
+            background-color: #747474;
+        }
+
+        .color_4 {
+            background-color: #bb2d23;
+        }
+
+        .color_5 {
+            background-color: #e9e4c6;
+        }
+
+        .color_6 {
+            background-color: #e2bc4f;
+        }
+
+        .color_7 {
+            background-color: #c9d34b;
+        }
+
+        .color_8 {
+            background-color: #134c9b;
+        }
+
+        .active_color {
+            width: 100% !important;
+        }
+
+        .car_img{
+            position: absolute;
+            top: 37%;
+            left: calc(50% - 640px);
+        }
+
+        .car_img>.car_color{
+            width: 1280px;
+            position: absolute;
+            z-index: 5;
+        }
+
+        .car_color{
+            display: none;
+        }
+
+        .select_color{
+            display: block;
+            animation: fadein 1s;
+        }
+
+        .color_text{
+            display: none;
+        }
+
+        .active_color .color_text{
+            animation: fadein 1.3s;
+            display: inline-block;
+            position: relative;
+            left: 12%;
+            top: 10%;
+        }
+
+        /* .car_overlay{
+            width: 640px;
+            height: 640px;
+            position: absolute;
+            top: calc(50% - 320px);
+            left: calc(50% - 320px);
+            background-color: #bb2d23;
+        } */
+    </style>
+
+</head>
+
+<body>
+    <div class="color_show" id="color_box">
+        <div class="color_1" id="color_1" value = "1"></div>
+        <div class="color_2" id="color_2" value = "2"></div>
+        <div class="color_3" id="color_3" value = "3"></div>
+        <div class="color_4 active_color" id="color_4" value = "4">
+            <div class = "color_text">
+                <h3>빨간색이다 우하하하</h3>
+                <p>나는야 슈퍼 빨간색</p>
+            </div>
+        </div>
+        <div class="color_5" id="color_5" value = "5"></div>
+        <div class="color_6" id="color_6" value = "6"></div>
+        <div class="color_7" id="color_7" value = "7"></div>
+        <div class="color_8" id="color_8" value = "8"></div>
+    </div>
+    <div class = "car_img">
+        <img alt="차량 이미지" src = "../Asset/images/FQ_040.png" class= "car_color" value = "1">
+        <img alt="차량 이미지" src = "../Asset/images/FQ_1F7.png" class= "car_color" value = "2">
+        <img alt="차량 이미지" src = "../Asset/images/FQ_1G3.png" class= "car_color" value = "3">
+        <img alt="차량 이미지" src = "../Asset/images/FQ_3P0.png" class= "car_color select_color" value = "4">
+        <img alt="차량 이미지" src = "../Asset/images/FQ_4U0.png" class= "car_color" value = "5">
+        <img alt="차량 이미지" src = "../Asset/images/FQ_5A3.png" class= "car_color" value = "6">
+        <img alt="차량 이미지" src = "../Asset/images/FQ_6W7.png" class= "car_color" value = "7">
+        <img alt="차량 이미지" src = "../Asset/images/FQ_8T7_O_03.png" class= "car_color" value = "8">
+    </div>
+    <script>
+        // let colorVal = document.getElementById('btn_1').getAttribute('value') //클래스네임으로 불러왔을땐 value 호출 불가
+        $(document).ready(function () {
+
+            $('#color_box div').click(function () {
+                var colorVal = $(this).attr('value')
+                
+                console.log(colorVal)
+
+                $(this).parent().children().removeClass('active_color')
+                $(this).addClass('active_color')
+
+                $(".car_color").removeClass('select_color')
+                $(".car_img img[value = " + colorVal + "]").addClass('select_color')
+            })
+        })
+
+
+
+    </script>
+</body>
+
+</html>

@@ -19,7 +19,7 @@
             margin: 0 auto;
         }
 
-        section:nth-child(1){
+        /* section:nth-child(1){
             background-color: aqua;
         }
         section:nth-child(2){
@@ -30,12 +30,12 @@
         }
         section:nth-child(4){
             background-color: cadetblue;
-        }
+        } */
     </style>
     <style>
       
       .img_bg_1,.img_text,.img_car{
-          position: relative;
+          position: absolute;
       }
 
         .img_bg_1{
@@ -55,7 +55,7 @@
         }
 
         .img_car{
-            top: 400px;
+            top: 100%;
             left: 444px;
             transition: top 1.3s;
             transition-delay: 1.2s;
@@ -68,13 +68,17 @@
         .nextSection{
             z-index: 1000;
         }
+
+        #section{
+            z-index: 10;
+        }
     </style>
    
     <style>
         
         .motion-up-move{
-            top: -314px;
-            display: inline-block;
+            top: 312px;
+        display: inline-block;
         }
 
         .motion-left-move{
@@ -97,7 +101,14 @@
             <img src = "../Asset/images/bg1.png" alt = "bg1" class = "img_bg_1" id = "img_bg_1">
             <img src = "../Asset/images/main_car.png" alt = "bg1" class = "img_car" id = "img_car">
         </div>
-
+        <div>
+            <h3>크로스오버 스타일</h3>
+            <p>
+                12가지의 다채로운 컬러가 매력인 <br /> 
+                컴팩트 하이브리드 프리우스 C에<br />
+                SUV의 액티브안 스타일이 업그레이드되었습니다.
+            </p>
+        </div>
     </section>
     <section class = "nextSection"></section>
     <section></section>
