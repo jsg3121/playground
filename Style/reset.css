@@ -3,3 +3,22 @@ h5, h6, p, span, ul, li {
     padding: 0;
     margin: 0;
 }
+
+
+@media screen and (min-width : 1920px) {
+    html{
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width : 1280px) and (max-width: 1919px) {
+    html{
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width : 960px) and (max-width: 1279px) {
+    html{
+        font-size: 10px;
+    }
+}
