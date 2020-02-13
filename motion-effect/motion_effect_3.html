@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery/jquery-3.4.1.min.js"></script>
+    <link rel = "stylesheet" href="../Style/reset.css">
+    <style type = "text/css">
+        body{
+            height: 500px;
+            background-color: bisque;
+        }
+        .btn_box{
+            margin: 300px auto 0;
+            display: flex;
+            width: 1008px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .btn_box button{
+            width: 36px;
+            border-radius: 18px;
+            height: 36px;
+            transition: width .3s;
+            border: 0;
+        }
+
+        .btn_box li{
+            width: 36px;
+            text-align: center;
+        }
+
+        .btn_box button:focus{
+            outline: none;
+        }
+
+        .active{
+            width: 60px !important;
+        }
+        .btn_1{
+            background-color: aqua; 
+        }
+        .btn_2{
+            background-color: blue; 
+        }
+        .btn_3{
+            background-color: coral; 
+        }
+        .btn_4{
+            background-color: cornflowerblue; 
+        }
+        .btn_5{
+            background-color: azure; 
+        }
+        .btn_6{
+            background-color: blueviolet; 
+        }
+        .btn_7{
+            background-color: burlywood; 
+        }
+        .btn_8{
+            background-color: firebrick; 
+        }
+        .btn_9{
+            background-color: deeppink; 
+        }
+        .btn_10{
+            background-color: darksalmon; 
+        }
+        .btn_11{
+            background-color: greenyellow; 
+        }
+        .btn_12{
+            background-color: indigo; 
+        }
+        
+
+        @media screen and (max-width: 960px){
+            .btn_box{
+                width: 100%;
+            }
+
+            .btn_box li{
+                width: calc(100% / 6);
+                text-align: center;
+            }
+
+            .active{
+                width: 80% !important;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <ul class = "btn_box">
+        <li>
+            <button class = "btn_1"></button>
+        </li>
+        <li>
+            <button class = "btn_2 active"></button>
+        </li>
+        <li>
+            <button class = "btn_3"></button>
+        </li>
+        <li>
+            <button class = "btn_4"></button>
+        </li>
+        <li>
+            <button class = "btn_5"></button>
+        </li>
+        <li>
+            <button class = "btn_6"></button>
+        </li>
+        <li>
+            <button class = "btn_7"></button>
+        </li>
+        <li>
+            <button class = "btn_8"></button>
+        </li>
+        <li>
+            <button class = "btn_9"></button>
+        </li>
+        <li>
+            <button class = "btn_10"></button>
+        </li>
+        <li>
+            <button class = "btn_11"></button>
+        </li>
+        <li>
+            <button class = "btn_12"></button>
+        </li>
+        
+    </ul>
+    <script>
+        $(document).ready(function() {
+            $(".btn_box li button").click(function() {
+                $(this).parent().parent().children().children().removeClass("active");
+                $(this).addClass("active");
+            })
+        })
+    </script>
+</body>
+</html>
