@@ -88,14 +88,13 @@
         .color_show {
             height: 100%;
             display: flex;
-            flex-direction: row-reverse;
         }
 
         .color_show>div {
             height: 100%;
             width: 3%;
             transition: .3s;
-            box-shadow: -0.57142rem 0px 1.21428rem 0px;
+            box-shadow: inset 4px -5px 20px -10px;
         }
 
         .color_1 {
@@ -157,7 +156,7 @@
         .active_color {
             width: 100% !important;
         }
-
+/* 
         .car_img{
             position: absolute;
             top: 37%;
@@ -191,14 +190,14 @@
             top: 10%;
         }
 
-        /* .car_overlay{
+        .car_overlay{
             width: 640px;
             height: 640px;
             position: absolute;
             top: calc(50% - 320px);
             left: calc(50% - 320px);
             background-color: #bb2d23;
-        } */
+        }
         .color_text h3{
             font-size: 3.71428rem;
             color: white;
@@ -211,7 +210,7 @@
             color: #ffffff;
             font-weight: 600;
             text-shadow: 0.21428rem 0.14285rem 0.35714rem #000000;
-        }
+        } */
 
     </style>
 
@@ -219,39 +218,25 @@
 
 <body>
     <div class="color_show" id="color_box">
-        <div class="color_1" id="color_1" value = "1"></div>
-        <div class="color_2" id="color_2" value = "2"></div>
-        <div class="color_3" id="color_3" value = "3"></div>
-        <div class="color_4" id="color_4" value = "4"></div>
-        <div class="color_5" id="color_5" value = "5"></div>
-        <div class="color_6" id="color_6" value = "6"></div>
-        <div class="color_7" id="color_7" value = "7"></div>
-        <div class="color_8" id="color_8" value = "8"></div>
-        <div class="color_9" id="color_9" value = "9"></div>
-        <div class="color_10" id="color_10" value = "10"></div>
-        <div class="color_11" id="color_11" value = "11"></div>
-        <div class="color_12 active_color" id="color_12" value = "12"></div>
-    </div>
-    <div class = "car_img">
-        <img alt="차량 이미지" src = "../Asset/images/super_white.png" class= "car_color" value = "1">
-        <img alt="차량 이미지" src = "../Asset/images/silver_metallic.png" class= "car_color" value = "2">
-        <img alt="차량 이미지" src = "../Asset/images/gray_metallic.png" class= "car_color" value = "3">
-        <img alt="차량 이미지" src = "../Asset/images/car_red.png" class= "car_color" value = "4">
-        <img alt="차량 이미지" src = "../Asset/images/beige.png" class= "car_color" value = "5">
-        <img alt="차량 이미지" src = "../Asset/images/yellow.png" class= "car_color" value = "6">
-        <img alt="차량 이미지" src = "../Asset/images/lime_green.png" class= "car_color" value = "7">
-        <img alt="차량 이미지" src = "../Asset/images/blue_metallic.png" class= "car_color" value = "8">
-        <img alt="차량 이미지" src = "../Asset/images/emerald.png" class= "car_color" value = "9">
-        <img alt="차량 이미지" src = "../Asset/images/greyish_blue.png" class= "car_color" value = "10">
-        <img alt="차량 이미지" src = "../Asset/images/white_per_crystal_shine.png" class= "car_color" value = "11">
-        <img alt="차량 이미지" src = "../Asset/images/black.png" class= "car_color select_color" value = "12">
+        <div class="color_1" id="color_1" data-value = "1"></div>
+        <div class="color_2" id="color_2" data-value = "2"></div>
+        <div class="color_3" id="color_3" data-value = "3"></div>
+        <div class="color_4" id="color_4" data-value = "4"></div>
+        <div class="color_5" id="color_5" data-value = "5"></div>
+        <div class="color_6" id="color_6" data-value = "6"></div>
+        <div class="color_7" id="color_7" data-value = "7"></div>
+        <div class="color_8" id="color_8" data-value = "8"></div>
+        <div class="color_9" id="color_9" data-value = "9"></div>
+        <div class="color_10" id="color_10" data-value = "10"></div>
+        <div class="color_11" id="color_11" data-value = "11"></div>
+        <div class="color_12 active_color" id="color_12" data-value = "12"></div>
     </div>
     <script>
         // let colorVal = document.getElementById('btn_1').getAttribute('value') //클래스네임으로 불러왔을땐 value 호출 불가
         $(document).ready(function () {
 
             $('#color_box div').click(function () {
-                var colorVal = $(this).attr('value')
+                var colorVal = $(this).attr('data-value')
                 
                 console.log(colorVal)
 
@@ -259,7 +244,7 @@
                 $(this).addClass('active_color')
 
                 $(".car_color").removeClass('select_color')
-                $(".car_img img[value = " + colorVal + "]").addClass('select_color')
+                $(".car_img img[data-value = " + colorVal + "]").addClass('select_color')
             })
         })
 
