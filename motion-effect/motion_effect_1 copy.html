@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="../style/reset.css">
+    <style>
+        
+        #test {
+            animation: fadein 2s;
+            -moz-animation: fadein 2s;
+            /* Firefox */
+            -webkit-animation: fadein 2s;
+            /* Safari and Chrome */
+            -o-animation: fadein 2s;
+            /* Opera */
+        }
+
+        @keyframes fadein {
+            from {
+                opacity: .5;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadein2 {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @-moz-keyframes fadein {
+
+            /* Firefox */
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @-webkit-keyframes fadein {
+
+            /* Safari and Chrome */
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @-o-keyframes fadein {
+
+            /* Opera */
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+
+    <style type="text/css">
+        body {
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .color_show {
+            height: 100%;
+        }
+
+        .color_show>div {
+            height: 100%;
+            width: 3%;
+            transition: .3s;
+            box-shadow: inset 4px -5px 20px -10px;
+            display: inline-block;
+        }
+
+        .color_1 {
+            background-color: #fefefe;
+            background: linear-gradient(0deg, #aaaaaa 0%, #fefefe 18%);
+        }
+
+        .color_2 {
+            background-color: #bebebe;
+            background: linear-gradient(0deg, #747474 0%, #bebebe 18%);
+        }
+
+        .color_3 {
+            background-color: #747474;
+            background: linear-gradient(0deg, #4d4d4d 0%, #747474 18%);
+        }
+
+        .color_4 {
+            background-color: #bb2d23;
+            background: linear-gradient(0deg, #7d2b25 0%, #bb2d23 18%);
+        }
+
+        .color_5 {
+            background-color: #e2dcb8;
+            background: linear-gradient(0deg, #95917c 0%, #e2dcb8 18%);
+        }
+
+        .color_6 {
+            background-color: #edb301;
+            background: linear-gradient(0deg, #9b7911 0%, #edb301 18%);
+        }
+
+        .color_7 {
+            background-color: #c9d34b;
+            background: linear-gradient(0deg, #7c8424 0%, #c9d34b 18%);
+        }
+
+        .color_8 {
+            background-color: #134c9b;
+            background: linear-gradient(0deg, #1c3d6a 0%, #134c9b 18%);
+        }
+        .color_9 {
+            background-color: #408fa8;
+            background: linear-gradient(0deg, #366574 0%, #408fa8 18%);
+        }
+        .color_10 {
+            background-color: #48596a;
+            background: linear-gradient(0deg, #3b454f 0%, #48596a 18%);
+        }
+        .color_11 {
+            background-color: #ddded3;
+            background: linear-gradient(0deg, #afb0aa 0%, #ddded3 18%);
+        }
+        .color_12 {
+            background-color: #1f1f1f;
+            background: linear-gradient(0deg, #131313 0%, #1f1f1f 18%);
+        }
+
+        .color_show>div:active{
+            width: 100% !important;
+        }
+/* 
+        .car_img{
+            position: absolute;
+            top: 37%;
+            left: calc(50% - 45.71428rem);
+        }
+
+        .car_img>.car_color{
+            width: 91.42857rem;
+            position: absolute;
+            z-index: 5;
+        }
+
+        .car_color{
+            display: none;
+        }
+
+        .select_color{
+            display: block;
+            animation: fadein 1s;
+        }
+
+        .color_text{
+            display: none;
+        }
+
+        .active_color .color_text{
+            animation: fadein2 1s;
+            display: inline-block;
+            position: relative;
+            left: 12%;
+            top: 10%;
+        }
+
+        .car_overlay{
+            width: 640px;
+            height: 640px;
+            position: absolute;
+            top: calc(50% - 320px);
+            left: calc(50% - 320px);
+            background-color: #bb2d23;
+        }
+        .color_text h3{
+            font-size: 3.71428rem;
+            color: white;
+            text-shadow: 0.28571rem 0.21428rem 0.42857rem #000000;
+        }
+
+        .color_text p {
+            font-size: 1.57142rem;
+            line-height: 2;
+            color: #ffffff;
+            font-weight: 600;
+            text-shadow: 0.21428rem 0.14285rem 0.35714rem #000000;
+        } */
+
+    </style>
+
+</head>
+
+<body>
+    <div class="color_show" id="color_box">
+        <div class="color_1" id="color_1" data-value = "1"></div>
+        <div class="color_2" id="color_2" data-value = "2"></div>
+        <div class="color_3" id="color_3" data-value = "3"></div>
+        <div class="color_4" id="color_4" data-value = "4"></div>
+        <div class="color_5" id="color_5" data-value = "5"></div>
+        <div class="color_6" id="color_6" data-value = "6"></div>
+        <div class="color_7" id="color_7" data-value = "7"></div>
+        <div class="color_8" id="color_8" data-value = "8"></div>
+        <div class="color_9" id="color_9" data-value = "9"></div>
+        <div class="color_10" id="color_10" data-value = "10"></div>
+        <div class="color_11" id="color_11" data-value = "11"></div>
+        <div class="color_12 active_color" id="color_12" data-value = "12"></div>
+    </div>
+    <!-- <script>
+        // let colorVal = document.getElementById('btn_1').getAttribute('value') //클래스네임으로 불러왔을땐 value 호출 불가
+        $(document).ready(function () {
+
+            $('#color_box div').click(function () {
+                var colorVal = $(this).attr('data-value')
+                
+                console.log(colorVal)
+
+                $(this).parent().children().removeClass('active_color')
+                $(this).addClass('active_color')
+
+                $(".car_color").removeClass('select_color')
+                $(".car_img img[data-value = " + colorVal + "]").addClass('select_color')
+            })
+        })
+    </script> -->
+</body>
+
+</html>
