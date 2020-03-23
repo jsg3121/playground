@@ -27,16 +27,32 @@
         .bg-before {
             height: 100%;
             width: 100%;
-            background-color: brown;
             position: absolute;
+        }
+
+        .bg-before .bg_img {
+            width: 100vw;
+            height: 100%;
+            background-image: url('../asset/images/city.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
         }
 
         .bg-after {
             height: 100%;
             width: 50%;
-            background-color: cadetblue;
             position: absolute;
             overflow: hidden;
+        }
+
+        .bg-after .bg_img{
+            width: 100vw;
+            height: 100%;
+            background-image: url('../asset/images/outdoor_img.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center bottom;
         }
 
         .bg-before img,
@@ -44,6 +60,7 @@
             width: 100vw;
             height: 100%;
             object-fit: contain;
+            opacity: 0;
         }
 
         .control-bar {
@@ -59,10 +76,12 @@
 <body>
     <div class="swipe-box" id='swipebox'>
         <div class="bg-before"> <!-- 뒤에서 움직이지 않는 이미지 -->
-            <img src="../Asset/images/gray_metallic.png" alt="img" height="100%" draggable="false">
+            <div class="bg_img"></div>
+            <img src="../asset/images/city_img.png" alt="img" height="100%" draggable="false">
         </div>
         <div class="bg-after" id="afterBg"><!-- 변경바와 함께 너비가 변하는 이미지 -->
-            <img src="../Asset/images/greyish_blue.png" alt="img" height="100%" draggable="false">
+            <div class="bg_img"></div>
+            <img src="../asset/images/outdoor_img.png" alt="img" height="100%" draggable="false">
         </div>
         <div class="control-bar" id="control_bar"> <!-- 배경 위치 조정 막대 -->
             <div class="control-color"></div>
