@@ -33,10 +33,7 @@
         .bg-before .bg_img {
             width: 100vw;
             height: 100%;
-            background-image: url('../asset/images/city.png');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center center;
+            background: #000000 url("../asset/images/city_img.png") center/cover no-repeat;
         }
 
         .bg-after {
@@ -49,10 +46,7 @@
         .bg-after .bg_img{
             width: 100vw;
             height: 100%;
-            background-image: url('../asset/images/outdoor_img.png');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center bottom;
+            background: #000000 url("../asset/images/outdoor_img.png") bottom/cover no-repeat;
         }
 
         .bg-before img,
@@ -88,5 +82,6 @@
         </div>
     </div>
 </body>
-<script src = "../swipe/swipe.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+<script src = "../swipe/swipe.js" type = "text/babel"></script>
 </html>
