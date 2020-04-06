@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div class="search_box">
+        <input type="text" maxlength="4" id="text_box" class="search">
+        <button id ="search_btn">검색</button>
+    </div>
+    <div class="search_list">
+        <ul class="category_1">
+            <li class = "list_title">
+                <p>당첨 물품 1</p>
+            </li>
+            <ul>
+                <li class="category_1_list_1">
+                    <p>홍길동(2201)</p>
+                </li>
+                <li class="category_1_list_2">
+                    <p>김철수(3121)</p>
+                </li>
+                <li class="category_1_list_3">
+                    <p>맹구(2512)</p>
+                </li>
+                <li class="category_1_list_4">
+                    <p>길동이(7389)</p>
+                </li>
+            </ul>
+        </ul>
+        <ul class="category_2">
+            <li class = "list_title">
+                <p>당첨 물품 2</p>
+            </li>
+            <ul>
+                <li class="category_2_list_1">
+                    <p>만식이(2049)</p>
+                </li>
+                <li class="category_2_list_2">
+                    <p>득칠이(9885)</p>
+                </li>
+                <li class="category_2_list_3">
+                    <p>상덕이(7415)</p>
+                </li>
+            </ul>
+        </ul>
+    </div>
+    <script>
+        $(document).ready(function() {
+
+            // 스케줄링 업데이트 관련
+            // var date = new Date()
+            // console.log(date)
+            // console.log(date.getFullYear())
+            // console.log(date.getMonth() + 1)
+            // console.log(date.getDate())
+            // console.log(date.getHours())
+            // console.log(date.getMinutes())
+            // var testDate = new Date(2020, 3, 6, 16, 45)
+
+            // if(date < testDate) {
+            //     alert('업뎃 안됨!!')
+            // } else {
+            //     alert('업뎃 됐다!!')
+            // }
+            // --------------------------------------
+
+            $("#search_btn").click(function() {
+               var search = $("#text_box").val(),   // 입력값
+                   search_text = search.replace(/\s/gi,""),    // 입력값 공백제거
+                   list_text = $(".search_list ul li p").text(), // 입력값이 들어있는 항목
+                   search_html = "",
+                   value_check =  /\.\b/
+               
+               if(search == '') {
+                   alert('번호를 입력해주세요.')
+               } else {
+               if (isNaN(search_text) || value_check) {
+                   alert('휴대전화 뒷자리를 입력해주세요.')
+                   //$("#text_box").val("")
+               } else if (list_text.match(search_text) && !value_check) {
+                   var result_val = $(".search_list ul ul li p:contains(" + search_text +")")
+                //    alert(result_val.text())
+                //    alert(result_val.parent().attr("class"))  // 해당 텍스트값이 있는 li태그
+                //    alert(result_val.parent().parent().parent().children("li").children("p").text())
+
+                   search_html = '<ul class="category_1">' +
+                                    '<li class = "list_title">' +
+                                        '<p>' + result_val.parent().parent().parent().children("li").children("p").text() + '</p>' +
+                                    '</li>' +
+                                    '<ul>' +
+                                        '<li class="category_1_list_1">' +
+                                            '<p>' + result_val.text() + '</p>' +
+                                        '</li>' +
+                                    '</ul>' +
+                                '</ul>'
+                    $(".search_list").html(search_html)
+               } else if (!list_text.match(search_text)){
+                    alert('당첨자 목록에 없는 번호입니다.')
+               }
+            }
+            })
+        })
+    </script>
+</body>
+</html>
