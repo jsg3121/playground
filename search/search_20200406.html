@@ -69,6 +69,10 @@
             // --------------------------------------
 
             $("#search_btn").click(function() {
+                
+
+
+
                var search = $("#text_box").val(),   // 입력값
                    search_text = search.replace(/\s/gi,""),    // 입력값 공백제거
                    list_text = $(".search_list ul li p").text(), // 입력값이 들어있는 항목
@@ -78,10 +82,10 @@
                if(search == '') {
                    alert('번호를 입력해주세요.')
                } else {
-               if (isNaN(search_text) || value_check) {
+               if (isNaN(search_text) || !value_check) {
                    alert('휴대전화 뒷자리를 입력해주세요.')
                    //$("#text_box").val("")
-               } else if (list_text.match(search_text) && !value_check) {
+               } else if (list_text.match(search_text) && value_check) {
                    var result_val = $(".search_list ul ul li p:contains(" + search_text +")")
                 //    alert(result_val.text())
                 //    alert(result_val.parent().attr("class"))  // 해당 텍스트값이 있는 li태그
