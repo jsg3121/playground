@@ -48,6 +48,9 @@
             </ul>
         </ul>
     </div>
+    <div class="search_val" style="display: none;">
+        
+    </div>
     <script>
         $(document).ready(function() {
 
@@ -100,8 +103,10 @@
                                             '<p>' + result_val.text() + '</p>' +
                                         '</li>' +
                                     '</ul>' +
-                                '</ul>'
-                    $(".search_list").html(search_html)
+                                '</ul>';
+                    $(".search_list").hide()
+                    $(".search_val").show()
+                    $(".search_val").html(search_html)
                } else if (!list_text.match(search_text)){
                     alert('당첨자 목록에 없는 번호입니다.')
                }
