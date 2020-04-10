@@ -22,7 +22,7 @@
         .rolling_box ul li {
             width: 100%;
             height: 100%;
-            transform: translateX();
+            transition: .5s;
         }
 
         .rolling_box ul li p {
@@ -31,12 +31,20 @@
             font-weight: bold;
         }
 
+        .before_slide {
+            transform: translateY(100%);
+        }
+
+        .after_slide {
+            transform: translateY(0);
+        }
+
     </style>
 </head>
 <body>
-    <div class="rolling_box" id ="rolling_box">
-        <ul>
-            
+    <div class="rolling_box">
+        <ul id ="rolling_box">
+           
         </ul>
     </div>
     <script>
@@ -52,16 +60,41 @@
                           ];
         var setIntervalNum = 0;
         var listHTML = '';
-
-        for(var i = 0; i < rollingData.length; i++) {
-            console.log(i)
-        }
+        var idx = 0;
+        var arrCnt = rollingData.length;
+        var listBox = document.getElementById('rolling_box')
+        var timer = 1000;
+        // for(var i = 0; i < rollingData.length; i++) {
+        // }
 
         setInterval(function() {
-            listHTML += "<li class = rolling_data" + i + "><p>"+ rollingData[i] + "</p></li>"
-        }, 1000)
+            
+            if(idx < arrCnt){
+                console.log(rollingData[idx])
+                if(idx < arrCnt - 1 && idx != 0){
+                    listBox.children[0].classList.add('active_card')
+                    listBox.children[1].classList.add('active_card')
+                    addAndRemove()
+                    idx ++
+                } else if(idx == arrCnt - 1) {
+                   
+                    idx = 0;
+                } else if (idx == 0) {
+                    listHTML =  "<li class = 'rolling_data" + idx + "'><p>"+ rollingData[idx] + "</p></li>" +
+                                "<li class = 'rolling_data" + (idx + 1) + "'><p>"+ rollingData[idx + 1] + "</p></li>";
+                                listBox.innerHTML = listHTML;
+                    idx ++
+                }
+            }
+
+        }, timer)
+
         
-        document.getElementById('rolling_box').children[0].innerHTML = listHTML;
+
+        
+        function addAndRemove() {
+            //listBox.innerHTML = listHTML;
+        }
 
     </script>
 </body>
