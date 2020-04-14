@@ -17,12 +17,28 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
+            position: relative;
         }
 
         .rolling_box ul li {
             width: 100%;
             height: 100%;
             transition: .5s;
+            position:absolute;
+            transition: top 2s;
+            top: 100%;
+            z-index: 1;
+            background-color: #ffffff;
+        }
+
+        .card_sliding{
+            top: 0 !important;
+            z-index: 100 !important;
+        } 
+
+        .card_sliding_after{
+            top: -100% !important;
+            z-index: 10 !important;
         }
 
         .rolling_box ul li p {
@@ -44,11 +60,14 @@
 <body>
     <div class="rolling_box">
         <ul id ="rolling_box">
-           
+           <li class="card_sliding" id ="first"><p></p></li>
+           <li class="" id ="second"><p></p></li>
+           <li class="" id ="third"><p></p></li>
         </ul>
     </div>
     <script>
-        var rollingData = [
+
+        let rollingData = [
                             '서울',
                             '대구',
                             '부산',
@@ -57,44 +76,71 @@
                             '포항',
                             '전주',
                             '강원'
-                          ];
-        var setIntervalNum = 0;
-        var listHTML = '';
-        var idx = 0;
-        var arrCnt = rollingData.length;
-        var listBox = document.getElementById('rolling_box')
-        var timer = 1000;
-        // for(var i = 0; i < rollingData.length; i++) {
-        // }
+                          ]
 
-        setInterval(function() {
+        let timer = 4000
+        let first = document.getElementById('first'),
+            second = document.getElementById('second'),
+            third = document.getElementById('third')
+        let move = 2
+        let dataCnt = 1
+        let listCnt = 1
+
+        first.children[0].innerHTML = rollingData[0]
+
+        setInterval(() => {
+            if(move == 2){
+                first.classList.remove('card_sliding')
+                first.classList.add('card_sliding_after')
+
+                second.classList.remove('card_sliding_after')
+                second.classList.add('card_sliding')
+
+                third.classList.remove('card_sliding_after')
+                third.classList.remove('card_sliding')
+
+                move = 0
+            } else if (move == 1){
+                first.classList.remove('card_sliding_after')
+                first.classList.add('card_sliding')
+
+                second.classList.remove('card_sliding_after')
+                second.classList.remove('card_sliding')
+
+                third.classList.remove('card_sliding')
+                third.classList.add('card_sliding_after')
+
+                move = 2
+            } else if (move == 0) {
+                first.classList.remove('card_sliding_after')
+                first.classList.remove('card_sliding')
+
+                second.classList.remove('card_sliding')
+                second.classList.add('card_sliding_after')
+
+                third.classList.remove('card_sliding_after')
+                third.classList.add('card_sliding')
+
+                move = 1
+            }
             
-            if(idx < arrCnt){
-                console.log(rollingData[idx])
-                if(idx < arrCnt - 1 && idx != 0){
-                    listBox.children[0].classList.add('active_card')
-                    listBox.children[1].classList.add('active_card')
-                    addAndRemove()
-                    idx ++
-                } else if(idx == arrCnt - 1) {
-                   
-                    idx = 0;
-                } else if (idx == 0) {
-                    listHTML =  "<li class = 'rolling_data" + idx + "'><p>"+ rollingData[idx] + "</p></li>" +
-                                "<li class = 'rolling_data" + (idx + 1) + "'><p>"+ rollingData[idx + 1] + "</p></li>";
-                                listBox.innerHTML = listHTML;
-                    idx ++
-                }
+            if(dataCnt < (rollingData.length - 1)) {
+                document.getElementById('rolling_box').children[listCnt].children[0].innerHTML = rollingData[dataCnt]
+                    dataCnt++
+            } else if(dataCnt == rollingData.length - 1) {
+                document.getElementById('rolling_box').children[listCnt].children[0].innerHTML = rollingData[dataCnt]
+                dataCnt = 0
             }
 
-        }, timer)
+            if(listCnt < 2) {
+                listCnt++
+            } else if (listCnt == 2) {
+                listCnt = 0
+            }
 
-        
+            console.log(listCnt)
+        }, timer);
 
-        
-        function addAndRemove() {
-            //listBox.innerHTML = listHTML;
-        }
 
     </script>
 </body>
