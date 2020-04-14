@@ -25,7 +25,7 @@
             height: 100%;
             transition: .5s;
             position:absolute;
-            transition: top 2s;
+            transition: top .75s;
             top: 100%;
             z-index: 1;
             background-color: #ffffff;
@@ -75,16 +75,23 @@
                             '울산',
                             '포항',
                             '전주',
-                            '강원'
-                          ]
+                            '강원',
+                            '대전',
+                            '광주',
+                            '제주',
+                            '해남'
+                          ]    // 롤링할 데이터를 넣으면 됩니다 갯수 제한 없어요
 
-        let timer = 4000
+        let timer = 2000 // 돌아갈 시간 주기 입니다 (1000 => 1초)
+
         let first = document.getElementById('first'),
             second = document.getElementById('second'),
             third = document.getElementById('third')
         let move = 2
         let dataCnt = 1
         let listCnt = 1
+
+        //위 선언은 따로 완전히 수정하지 않는 한 조정할 필요는 없습니다.
 
         first.children[0].innerHTML = rollingData[0]
 
