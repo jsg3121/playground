@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="../jquery/jquery-3.4.1.min.js"></script>
+    <!-- <script src="../jquery/jquery-3.4.1.min.js"></script> -->
     <link rel="stylesheet" href="../fonts/font.css">
     <link rel="stylesheet" href="../Style/reset.css">
     <style>
@@ -12,6 +12,7 @@
         body{
             display: flex;
             width: 1200px;
+            align-items: center;
             height: 500px;
             margin: 0 auto;
         }
@@ -32,16 +33,14 @@
             height: 100%;
             position: absolute;
             top: 0;
-            left: -584px;    /* 처음 화면에 표시될 때 두번째를 보여줘야 해요 */
+            left: 0;
             font-size: 0;
             padding: 0;
-            display: flex;  /* li에 inline-block 넣는것보다 이 기능이 훨씬 더 좋아요 ***대신 IE10이하 버전은 작동 안해요*** */
-            /* display : flex 사용 방법 */
-            /* 
-                inline-block 할 태그들의 부모 (여기서는 li에 inline-block를 넣기 때문에 부모인 ul태그)에 display:flex를 적용해주면 됩니다
-                inline-block 할때 수평 안맞아서 vertical맞추는것도 안해도 돼요
-                같이 쓰는 기능이 있긴 한데 여기서는 설명안해도 될 것 같아서 나중에 궁금하시면 알려드릴게요
-            */
+            display: flex;
+        }
+
+        .move {
+            transition: left 0.7s;
         }
 
         .red {
@@ -69,8 +68,8 @@
 <body>
     <button id = "di21">이전</button>
     <div id="di20">
-        <ul class="visual_img">
-            <li><div class="red"></div></li>
+        <ul class="visual_img" id = "di24">
+            <li class="reds"><div class="red"></div></li>
             <li><div class="green"></div></li>
             <li class = "1"><div class="yellow"></div></li>
             <li><div class="blue"></div></li>
@@ -79,20 +78,55 @@
     <button id = "di22">다음</button>
 
     <script>
-        $(document).ready(function() {
-            $("#di21").click(function() {
-                $(".visual_img").animate({left: "0"},function() { //기준이 -584px이기때문에 카드를 오른쪽으로 이동
-                    $(".visual_img li:last").prependTo(".visual_img");
-                    $(".visual_img").css({top: "0", left:"-584px"})
-                })
-            })
+        // $(document).ready(function() {
+        //     $("#di21").click(function() {
+        //         $(".visual_img").animate({left: "0"},function() { //기준이 -584px이기때문에 카드를 오른쪽으로 이동
+        //             $(".visual_img li:last").prependTo(".visual_img");
+        //             $(".visual_img").css({top: "0", left:"-584px"})
+        //         })
+        //     })
 
-            $("#di22").click(function() {
-                $(".visual_img").animate({left: "-1168px"},function() { // 기준이 -584px이기때문에 카드를 왼쪽으로 이동
-                    $(".visual_img li:first").appendTo(".visual_img");
-                    $(".visual_img").css({top: "0", left:"-584px"})  // 단위 꼭 넣어주세요!!!!!!!
-                })
-            })
+        //     $("#di22").click(function() {
+        //         $(".visual_img").animate({left: "-1168px"},function() { // 기준이 -584px이기때문에 카드를 왼쪽으로 이동
+        //             $(".visual_img li:first").appendTo(".visual_img");
+        //             $(".visual_img").css({top: "0", left:"-584px"})  // 단위 꼭 넣어주세요!!!!!!!
+        //         })
+        //     })
+        // })
+
+        let slideView = document.querySelector(".visual_img")
+        let slideContent = document.querySelector(".visual_img li"),
+            slideMotion = (slideContent.clientWidth * -1)
+            slideView.style.left = slideMotion + "px"
+
+        document.getElementById("di21").addEventListener("click", () => {
+            event.stopPropagation()
+            
+            document.getElementById("di24").classList.add("move")
+            slideView.style.left = 0
+
+            setTimeout(() => {
+                let lastList = document.querySelector(".visual_img li:last-child")
+                slideView.prepend(lastList)
+                document.getElementById("di24").classList.remove("move")
+                slideView.style.left = slideMotion + "px"
+            }, 700);
+        })
+
+        document.getElementById("di22").addEventListener("click", () => {
+            event.stopPropagation()
+
+            document.getElementById("di24").classList.add("move")
+            slideView.style.left = slideMotion * 2 + "px"
+
+            setTimeout(() => {
+
+                let firstList = document.querySelector(".visual_img li:first-child")
+                slideView.append(firstList)
+                document.getElementById("di24").classList.remove("move")
+                slideView.style.left = slideMotion + "px"
+            }, 700);
+            
         })
     </script>
 </body>
