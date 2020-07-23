@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,7 @@
     <link rel="stylesheet" href="../fonts/font.css">
     <link rel="stylesheet" href="../Style/reset.css">
     <style>
-
-        body{
+        body {
             display: flex;
             width: 1200px;
             align-items: center;
@@ -28,7 +28,7 @@
             margin: 0 auto;
         }
 
-        .visual_img{
+        .visual_img {
             width: 2336px;
             height: 100%;
             position: absolute;
@@ -48,16 +48,19 @@
             height: 309px;
             background-color: red;
         }
+
         .green {
             width: 584px;
             height: 309px;
             background-color: green;
         }
+
         .yellow {
             width: 584px;
             height: 309px;
             background-color: yellow;
         }
+
         .blue {
             width: 584px;
             height: 309px;
@@ -65,17 +68,26 @@
         }
     </style>
 </head>
+
 <body>
-    <button id = "di21">이전</button>
+    <button id="di21">이전</button>
     <div id="di20">
-        <ul class="visual_img" id = "di24">
-            <li class="reds"><div class="red"></div></li>
-            <li><div class="green"></div></li>
-            <li class = "1"><div class="yellow"></div></li>
-            <li><div class="blue"></div></li>
+        <ul class="visual_img" id="di24">
+            <li class="reds">
+                <div class="red"></div>
+            </li>
+            <li>
+                <div class="green"></div>
+            </li>
+            <li class="1">
+                <div class="yellow"></div>
+            </li>
+            <li>
+                <div class="blue"></div>
+            </li>
         </ul>
     </div>
-    <button id = "di22">다음</button>
+    <button id="di22">다음</button>
 
     <script>
         // $(document).ready(function() {
@@ -97,37 +109,43 @@
         let slideView = document.querySelector(".visual_img")
         let slideContent = document.querySelector(".visual_img li"),
             slideMotion = (slideContent.clientWidth * -1)
-            slideView.style.left = slideMotion + "px"
+        let doubleEvent = true
+
+        slideView.style.left = slideMotion + "px"
 
         document.getElementById("di21").addEventListener("click", () => {
-            event.stopPropagation()
-            
-            document.getElementById("di24").classList.add("move")
-            slideView.style.left = 0
+            if (doubleEvent) {
+                doubleEvent = false
+                document.getElementById("di24").classList.add("move")
+                slideView.style.left = 0
 
-            setTimeout(() => {
-                let lastList = document.querySelector(".visual_img li:last-child")
-                slideView.prepend(lastList)
-                document.getElementById("di24").classList.remove("move")
-                slideView.style.left = slideMotion + "px"
-            }, 700);
+                setTimeout(() => {
+                    let lastList = document.querySelector(".visual_img li:last-child")
+                    slideView.prepend(lastList)
+                    document.getElementById("di24").classList.remove("move")
+                    slideView.style.left = slideMotion + "px"
+                    doubleEvent = true
+                }, 700);
+            }
         })
 
         document.getElementById("di22").addEventListener("click", () => {
-            event.stopPropagation()
+            if (doubleEvent) {
+                doubleEvent = false
+                document.getElementById("di24").classList.add("move")
+                slideView.style.left = slideMotion * 2 + "px"
 
-            document.getElementById("di24").classList.add("move")
-            slideView.style.left = slideMotion * 2 + "px"
+                setTimeout(() => {
+                    let firstList = document.querySelector(".visual_img li:first-child")
+                    slideView.append(firstList)
+                    document.getElementById("di24").classList.remove("move")
+                    slideView.style.left = slideMotion + "px"
+                    doubleEvent = true
+                }, 700);
+            }
 
-            setTimeout(() => {
-
-                let firstList = document.querySelector(".visual_img li:first-child")
-                slideView.append(firstList)
-                document.getElementById("di24").classList.remove("move")
-                slideView.style.left = slideMotion + "px"
-            }, 700);
-            
         })
     </script>
 </body>
+
 </html>
