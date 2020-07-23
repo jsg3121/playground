@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="../Style/reset.css">
+    <style>
+        
+        body {
+            width: 1200px;
+            height: 500px;
+            margin: 400px auto 0;
+        }
+
+        table thead tr {
+            background-color: #ececec;
+        }
+
+        th, td {
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        table tr {
+            height: 30px;
+            border: 1px solid #777777;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="table_box">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class = "sort">sort</th>
+                    <th>title</th>
+                    <th class = "sort">title</th>
+                    <th class = "sort">title</th>
+                    <th>title</th>
+                    <th>title</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>content1</td>
+                    <td>content1</td>
+                    <td>content1</td>
+                    <td>content1</td>
+                    <td>content1</td>
+                    <td>content1</td>
+                </tr>
+                <tr>
+                    <td>usfntent2</td>
+                    <td>usfntent2</td>
+                    <td>usfntent2</td>
+                    <td>usfntent2</td>
+                    <td>usfntent2</td>
+                    <td>usfntent2</td>
+                </tr>
+                <tr>
+                    <td>112tent12</td>
+                    <td>112tent12</td>
+                    <td>112tent12</td>
+                    <td>112tent12</td>
+                    <td>112tent12</td>
+                    <td>112tent12</td>
+                </tr>
+                <tr>
+                    <td>abcke</td>
+                    <td>abcke</td>
+                    <td>abcke</td>
+                    <td>abcke</td>
+                    <td>abcke</td>
+                    <td>abcke</td>
+                </tr>
+                <tr>
+                    <td>hwehs</td>
+                    <td>hwehs</td>
+                    <td>hwehs</td>
+                    <td>hwehs</td>
+                    <td>hwehs</td>
+                    <td>hwehs</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("table thead tr .sort").click(function() {
+                let idxTitle = $(this).index();
+
+                $(this).closest("table").children("tbody").children("tr").each(function() {
+                    console.log($(this).children("td").eq(idxTitle).text())
+                })
+            })
+        })
+
+    </script>
+</body>
+</html>

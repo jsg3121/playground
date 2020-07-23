@@ -110,8 +110,6 @@
         let slideContent = document.querySelector(".visual_img li"),
             slideMotion = (slideContent.clientWidth * -1)
         let doubleEvent = true
-
-        // slidePrev(doubleEvent, slideView, slideMotion);
         slideView.style.left = slideMotion + "px"
 
         document.getElementById("di21").addEventListener("click", () => {
@@ -129,6 +127,7 @@
                 }, 700);
             }
         })
+        
         document.getElementById("di22").addEventListener("click", () => {
             if (doubleEvent) {
                 doubleEvent = false
