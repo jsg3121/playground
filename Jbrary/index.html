@@ -1,0 +1,73 @@
+<!-- 새로 작성한 라이브러리 샘플 화면 입니다 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Document</title>
+    
+    <!-- jquery -->
+    <script src="./jquery/jquery-3.4.1.min.js"></script>
+    
+    <!-- java script -->
+    <!-- 
+        <script src="./js/browser.js"></script>
+        <script src = "./js/index.js" type = "text/babel"></script> 
+    -->
+    
+    <link rel="stylesheet" href="./css/index.css">
+    <style type="text/css">
+    </style>
+</head>
+<body>
+    <section>
+        <h2>색상 선택 모션</h2>
+        <div class="swipe-box" id='swipebox'>
+            <div class="bg-before"> <!-- 뒤에서 움직이지 않는 이미지 -->
+                <div class="bg_img"></div>
+                <img src="../asset/images/city_img.png" alt="img" height="100%" draggable="false">
+            </div>
+            <div class="bg-after" id="afterBg"><!-- 변경바와 함께 너비가 변하는 이미지 -->
+                <div class="bg_img"></div>
+                <img src="../asset/images/outdoor_img.png" alt="img" height="100%" draggable="false">
+            </div>
+            <div class="control-bar" id="control_bar"> <!-- 배경 위치 조정 막대 -->
+                <div class="control-color"></div>
+            </div>
+        </div>
+    </section>    
+    
+    <script>
+        $(document).ready(function() {
+            // 색상 선택 모션
+            const data1 = [
+                {"data" : "색상 1", "color" : "red"},
+                {"data" : "색상 2", "color" : "brown"},
+                {"data" : "색상 3", "color" : "blue"},
+                {"data" : "색상 4", "color" : "yellow"},
+                {"data" : "색상 5", "color" : "green"},
+                {"data" : "색상 6", "color" : "skyblue"},
+                {"data" : "색상 7", "color" : "orange"},
+                {"data" : "색상 8", "color" : "violet"},
+                {"data" : "색상 9", "color" : "black"},
+                {"data" : "색상 10", "color" : "navy"},
+                {"data" : "색상 11", "color" : "white"},
+                {"data" : "색상 12", "color" : "grey"}
+            ]
+
+            $("#select-color").selectColor(function() {
+                data : data1
+            })
+
+            for(let i = 0; i < data1.length; i++) {
+                console.log(data[i])
+            }
+        })
+
+        let selectColor = (data, color) => {
+
+        }
+    </script>
+</body>
+</html>
