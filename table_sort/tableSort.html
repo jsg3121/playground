@@ -45,23 +45,23 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>content1</td>
-                    <td>content1</td>
-                    <td>content1</td>
-                    <td>content1</td>
-                    <td>content1</td>
-                    <td>content1</td>
+                    <td>zds</td>
+                    <td>ascav</td>
+                    <td>xghe</td>
+                    <td>vsvew</td>
+                    <td>ysdc</td>
+                    <td>gase</td>
                 </tr>
                 <tr>
-                    <td>usfntent2</td>
-                    <td>usfntent2</td>
-                    <td>usfntent2</td>
+                    <td>1</td>
+                    <td>안녕하세요</td>
+                    <td>반갑습니다</td>
                     <td>usfntent2</td>
                     <td>usfntent2</td>
                     <td>usfntent2</td>
                 </tr>
                 <tr>
-                    <td>112tent12</td>
+                    <td>112</td>
                     <td>112tent12</td>
                     <td>112tent12</td>
                     <td>112tent12</td>
@@ -69,7 +69,7 @@
                     <td>112tent12</td>
                 </tr>
                 <tr>
-                    <td>abcke</td>
+                    <td>4</td>
                     <td>abcke</td>
                     <td>abcke</td>
                     <td>abcke</td>
@@ -77,9 +77,33 @@
                     <td>abcke</td>
                 </tr>
                 <tr>
+                    <td>하이염</td>
+                    <td>ax</td>
                     <td>hwehs</td>
                     <td>hwehs</td>
                     <td>hwehs</td>
+                    <td>hwehs</td>
+                </tr>
+                <tr>
+                    <td>하이염</td>
+                    <td>qevz</td>
+                    <td>hwehs</td>
+                    <td>hwehs</td>
+                    <td>hwehs</td>
+                    <td>hwehs</td>
+                </tr>
+                <tr>
+                    <td>가나다</td>
+                    <td>hwehs</td>
+                    <td>hwehs</td>
+                    <td>hwehs</td>
+                    <td>hwehs</td>
+                    <td>hwehs</td>
+                </tr>
+                <tr>
+                    <td>osp</td>
+                    <td>ase</td>
+                    <td>wdvs</td>
                     <td>hwehs</td>
                     <td>hwehs</td>
                     <td>hwehs</td>
@@ -91,11 +115,48 @@
     <script>
         $(document).ready(function() {
             $("table thead tr .sort").click(function() {
-                let idxTitle = $(this).index();
+                let idxTitle = $(this).index(),
+                    rowLength = $(this).closest("table").children("tbody").children("tr").length,
+                    colLength = $(this).closest("table").children("thead").children("tr").children("th").length;
+                let sortArr = Array.from(Array(rowLength), () => new Array(colLength));
+                
 
-                $(this).closest("table").children("tbody").children("tr").each(function() {
-                    console.log($(this).children("td").eq(idxTitle).text())
+                for(let i = 0; i < rowLength; i++) {
+                    for(let j = 0; j < colLength; j++) {
+                        sortArr[i][j] = $(this).closest("table").children("tbody").children("tr").eq(i).children("td").eq(j).text()
+                    }
+                }
+
+                sortArr.sort(function(a, b){
+                    if(a[idxTitle] < b[idxTitle]) return -1;
+                    else if (a[idxTitle] > b[idxTitle]) return 1;
+                    else return 0
                 })
+
+                sortArr.sort(function(a, b){
+                    let typeOf_a = parseInt(a[idxTitle]),
+                        typeOf_b = parseInt(b[idxTitle])
+
+                    if(isNaN(typeOf_a)) {
+                        typeOf_a = a[idxTitle];
+                    }
+
+                    if(isNaN(typeOf_b)) {
+                        typeOf_b = b[idxTitle];
+                    }
+
+                    if(typeOf_a < typeOf_b) return -1;
+                    else if (typeOf_a > typeOf_b) return 1;
+                    else return 0
+                })
+
+                console.log(sortArr)
+
+                for(let i = 0; i < rowLength; i++) {
+                    for(let j = 0; j < colLength; j++) {
+                        $(this).closest("table").children("tbody").children("tr").eq(i).children("td").eq(j).text(sortArr[i][j]) 
+                    }
+                }
             })
         })
 
