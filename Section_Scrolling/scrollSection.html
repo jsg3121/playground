@@ -1,0 +1,72 @@
+<!-- 스크롤하면 섹션단위로 스크롤이 내려가기 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../jquery/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="../Style/reset.css" />
+    <style>
+      body {
+        height: 100vh;
+        transition: transform 0.7s;
+      }
+
+      section {
+        height: 100%;
+        width: 90%;
+        margin: 0 auto;
+      }
+
+      #section1 {
+        background-color: rgb(231, 104, 220);
+      }
+
+      #section2 {
+        background-color: rgb(228, 143, 32);
+      }
+
+      #section3 {
+        background-color: rgb(60, 160, 126);
+      }
+
+      #section4 {
+        background-color: rgb(218, 83, 83);
+      }
+
+      #section5 {
+        background-color: rgb(87, 117, 144);
+      }
+
+      #section6 {
+        background-color: rgb(174, 189, 89);
+      }
+    </style>
+  </head>
+  <body>
+    <section id="section1"></section>
+    <section id="section2"></section>
+    <section id="section3"></section>
+    <section id="section4"></section>
+    <section id="section5"></section>
+    <section id="section6"></section>
+  </body>
+
+  <script>
+    $(document).ready(function () {
+      let height = $("#section1").height();
+      let val = true;
+      let nowHeight = window.scrollY,
+        prevHeight = 0,
+        nextHeight = nowHeight + 937;
+
+      $(window).scroll(function () {
+        window.scrollTo(0, nextHeight);
+        setTimeout(() => {
+          nextHeight += 937;
+        }, 3000);
+      });
+    });
+  </script>
+</html>
