@@ -11,6 +11,7 @@
       body {
         height: 100vh;
         transition: transform 0.7s;
+        overflow: hidden;
       }
 
       section {
@@ -56,17 +57,23 @@
   <script>
     $(document).ready(function () {
       let height = $("#section1").height();
-      let val = true;
-      let nowHeight = window.scrollY,
-        prevHeight = 0,
-        nextHeight = nowHeight + 937;
-
-      $(window).scroll(function () {
-        window.scrollTo(0, nextHeight);
-        setTimeout(() => {
-          nextHeight += 937;
-        }, 3000);
-      });
+      let scroll = true;
+      let i = 0;
+      // if (scroll == true) {
+      //   $(window).on("mousewheel", function () {
+      //     console.log("on");
+      //     i++;
+      //     scroll = false;
+      //     $("body").css({ transform: "translateY(" + height * i * -1 + "px)" });
+      //     setTimeout(() => {
+      //       scroll = true;
+      //       console.log(scroll);
+      //     }, 700);
+      //     console.log(scroll);
+      //   });
+      // } else {
+      //   $(window).off("mousewheel");
+      // }
     });
   </script>
 </html>
