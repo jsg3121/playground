@@ -1,3 +1,4 @@
+//openweathermap api ID = 9c1ca1f34e263d5ef31049a8d5e611c9
 const express = require("express");
 const axios = require("axios");
 const app = express();
@@ -7,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 
 axios
   .get(
-    "https://api.openweathermap.org/data/2.5/onecall?lat=37.5683&lon=126.9778&exclude=hourly&appid=9c1ca1f34e263d5ef31049a8d5e611c9"
+    "http://api.openweathermap.org/data/2.5/forecast?q=London,us&appid=9c1ca1f34e263d5ef31049a8d5e611c9"
   )
   .then((response) => {
     console.log(response.data);
